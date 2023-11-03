@@ -1,0 +1,48 @@
+package com.example.OSSG_INVENTORY.controller;
+
+
+import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import com.example.OSSG_INVENTORY.Entity.*;
+import com.example.OSSG_INVENTORY.Service.Service_Implementation;
+
+@RestController
+@RequestMapping("/inventory")
+public class Inventory_Controller {
+	private Service_Implementation si;
+	
+	public Inventory_Controller(Service_Implementation si) {
+		this.si = si;
+	}
+	
+	@GetMapping("serverlist")
+	public List<Inventory> getAllServers(){
+		return si.getAllServers();
+	}
+
+	
+	@PostMapping("/addserver")
+	public String addServer(@RequestBody Inventory inventory) {
+		
+		try {
+			si.addServer(inventory);
+			return "Server Added";
+		} catch (Exception e) {
+			return "Server Not Added";
+		}
+	}
+	
+	@PostMapping("/deleteserver/{sid}")
+	public String deleteServer(@PathVariable("sid") int sid) {
+		
+		try {
+			si.deleteServer(sid);
+			return "Server Deleted";
+		} catch (Exception e) {
+			return "Server Not Deleted";
+		}
+		
+	}
+		
+	
+}
