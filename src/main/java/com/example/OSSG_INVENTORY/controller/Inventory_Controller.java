@@ -44,5 +44,33 @@ public class Inventory_Controller {
 		
 	}
 		
+	@GetMapping("hardwarelist")
+	public List<Hardware> getAllHardware(){
+		return si.getAllHardware();
+	}
+
+	
+	@PostMapping("/addhardware")
+	public String addHardware(@RequestBody Hardware hardware) {
+		
+		try {
+			si.addHardware(hardware);
+			return "Hardware Added";
+		} catch (Exception e) {
+			return "Hardware Not Added";
+		}
+	}
+	
+	@PostMapping("/deletehardware/{hid}")
+	public String deleteHardware(@PathVariable("hid") int hid) {
+		
+		try {
+			si.deleteHardware(hid);
+			return "Hardware Deleted";
+		} catch (Exception e) {
+			return "Hardware Not Deleted";
+		}
+		
+	}
 	
 }
