@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.Users;
 import com.example.OSSG_INVENTORY.persistance.HardwareRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryRepository;
+import com.example.OSSG_INVENTORY.persistance.UserRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -17,12 +19,14 @@ public class Service_Implementation implements Service_Declarations {
 
 	private InventoryRepository ir;
 	private HardwareRepository hr;
+	private UserRepository ur;
 
 	@Autowired
-	public Service_Implementation(InventoryRepository ir, HardwareRepository hr) {
+	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur) {
 		super();
 		this.ir = ir;
 		this.hr = hr;
+		this.ur = ur;
 	}
 
 	@Override
@@ -64,5 +68,22 @@ public class Service_Implementation implements Service_Declarations {
 		// TODO Auto-generated method stub
 		hr.deleteById(hid);
 	}
+
+	@Override
+	@Transactional
+	public void signup(Users user) {
+		// TODO Auto-generated method stub
+		ur.save(user);
+	}
+
+	@Override
+	@Transactional
+	public Users getByUsername(String username) {
+		// TODO Auto-generated method stub
+		
+		return ur.getByUsername(username);
+	}
+
+
 
 }

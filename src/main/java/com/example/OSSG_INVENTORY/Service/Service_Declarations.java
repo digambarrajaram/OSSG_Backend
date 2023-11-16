@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.Users;
 
 
 public interface Service_Declarations {
@@ -19,4 +20,8 @@ public interface Service_Declarations {
 	public void addHardware(Hardware hardware);
 	
 	public void deleteHardware(int hid);
+	
+	public void signup(Users user);
+	
+	public Users getByUsername(String username);
 }

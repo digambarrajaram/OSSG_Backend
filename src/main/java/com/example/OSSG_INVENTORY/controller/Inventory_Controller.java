@@ -73,4 +73,26 @@ public class Inventory_Controller {
 		
 	}
 	
+	@PostMapping("/signup")
+	public String signup(@RequestBody Users user) {
+		
+		try {
+			si.signup(user);
+			return "User Added";
+		} catch (Exception e) {
+			return "User Not Added";
+		}
+		
+	}
+	
+	@GetMapping("login/{username}")
+	public Users getByUsername(@PathVariable("username")String username)
+	{	
+		try {
+		return si.getByUsername(username);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }
