@@ -84,6 +84,13 @@ public class Service_Implementation implements Service_Declarations {
 		return ur.getByUsername(username);
 	}
 
+	@Override
+	@Transactional
+	public List<String> getLocation() {
+		// TODO Auto-generated method stub
+		return hr.getLocation();
+	}
+
 
 
 }

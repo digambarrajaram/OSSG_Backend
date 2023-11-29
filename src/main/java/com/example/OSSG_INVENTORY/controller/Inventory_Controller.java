@@ -95,4 +95,14 @@ public class Inventory_Controller {
 		}
 	}
 	
+	@GetMapping("location")
+	public List<String> getLocation()
+	{	
+		try {
+		return si.getLocation();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

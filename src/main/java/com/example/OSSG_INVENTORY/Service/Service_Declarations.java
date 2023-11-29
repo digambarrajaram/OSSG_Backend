@@ -24,4 +24,6 @@ public interface Service_Declarations {
 	public void signup(Users user);
 	
 	public Users getByUsername(String username);
+	
+	public List<String> getLocation();
 }
