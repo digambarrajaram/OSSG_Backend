@@ -98,11 +98,9 @@ public class HardwareChangelog {
 	@Column(name = "principaleoservice")
 	private String principaleoservice;
 	
-
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@CreationTimestamp
-	@Column(name = "mtime",nullable = false, updatable = false)
-	@CreationTimestamp
+	@Basic(optional = false)
+	@Column(name = "mtime", insertable =false, updatable=false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date mtime;
 	
 	@Column(name = "user")
