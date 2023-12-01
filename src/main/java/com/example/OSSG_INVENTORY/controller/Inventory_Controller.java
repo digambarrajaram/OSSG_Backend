@@ -104,10 +104,26 @@ public class Inventory_Controller {
 			return null;
 		}
 	}
-	@PostMapping("/save/{assetno}")
-    public void saveEntityWithCurrentTimestampAndDetails(@PathVariable("assetno")String assetno) {
-        // Save the entity with the current timestamp and other details, and return the saved entity
-        si.changeLog(assetno);
+	@PostMapping("/hardwarechangelog")
+    public String hardwareChangeLog(@RequestBody HardwareChangelog hcl) {
+		try {
+			si.changeLog(hcl);
+			return "Added to Hardware ChangeLog";
+		} catch (Exception e) {
+			return "Not Added to Hardware ChangeLog";
+		}
     }
+	
+	@PostMapping("/inventorychangelog")
+	public String addToChaLog(@RequestBody InventoryChangelog ic) {
+		
+		try {
+			si.addToInvChaLog(ic);
+			return "Added to ChangeLog";
+		} catch (Exception e) {
+			return "Not Added to ChangeLog";
+		}
+		
+	}
 	
 }

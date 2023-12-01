@@ -3,7 +3,9 @@ package com.example.OSSG_INVENTORY.Service;
 import java.util.List;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
+import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 
 
@@ -27,7 +29,8 @@ public interface Service_Declarations {
 	
 	public List<String> getLocation();
 	
+	public void addToInvChaLog(InventoryChangelog ic);
 
-	public void changeLog(String assetno);
-	
+	void changeLog(HardwareChangelog h);
+
 }

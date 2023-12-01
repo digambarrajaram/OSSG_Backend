@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 import com.example.OSSG_INVENTORY.persistance.HardwareChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.HardwareRepository;
+import com.example.OSSG_INVENTORY.persistance.InventoryChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryRepository;
 import com.example.OSSG_INVENTORY.persistance.UserRepository;
 
@@ -22,16 +24,22 @@ public class Service_Implementation implements Service_Declarations {
 	private InventoryRepository ir;
 	private HardwareRepository hr;
 	private UserRepository ur;
+
 	private HardwareChangelogRepository hcr;
+	private InventoryChangelogRepository icr;
 
 	@Autowired
-	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur,
-			HardwareChangelogRepository hcr) {
+	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur, InventoryChangelogRepository icr,HardwareChangelogRepository hcr) {
+
 		super();
 		this.ir = ir;
 		this.hr = hr;
 		this.ur = ur;
+
 		this.hcr = hcr;
+
+		this.icr = icr;
+
 	}
 
 	@Override
@@ -98,11 +106,15 @@ public class Service_Implementation implements Service_Declarations {
 
 	@Override
 	@Transactional
-	public void changeLog(String assetno) {
+	public void changeLog(HardwareChangelog h) {
 		// TODO Auto-generated method stub
-		HardwareChangelog h=new HardwareChangelog(assetno);		
 		hcr.save(h);
 		
+	}
+
+	public void addToInvChaLog(InventoryChangelog ic) {
+		// TODO Auto-generated method stub
+		 icr.save(ic);
 	}
 
 }
