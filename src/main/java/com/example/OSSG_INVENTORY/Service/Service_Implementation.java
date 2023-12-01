@@ -111,10 +111,26 @@ public class Service_Implementation implements Service_Declarations {
 		hcr.save(h);
 		
 	}
-
+	
+	@Override
+	@Transactional
 	public void addToInvChaLog(InventoryChangelog ic) {
 		// TODO Auto-generated method stub
 		 icr.save(ic);
+	}
+
+	@Override
+	@Transactional
+	public Inventory getLinuxById(int sid) {
+		// TODO Auto-generated method stub
+		return ir.findById(sid).get();
+	}
+
+	@Override
+	@Transactional
+	public List<InventoryChangelog> getAllLinuxChangeLog() {
+		// TODO Auto-generated method stub
+		return icr.findAll();
 	}
 
 }

@@ -12,18 +12,6 @@ import jakarta.persistence.*;
 @Table(name = "hardwarechangelog")
 public class HardwareChangelog {
 
-//	public HardwareChangelog(int hid, String assetno, Date creationTimestamp) {
-//		super();
-//		this.hid = hid;
-//		this.assetno = assetno;
-//		this.creationTimestamp = creationTimestamp;
-//	}
-//	public HardwareChangelog(String assetno) {
-//		super();
-//		this.assetno = assetno;
-//		 this.creationTimestamp = new Date();
-//	}
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

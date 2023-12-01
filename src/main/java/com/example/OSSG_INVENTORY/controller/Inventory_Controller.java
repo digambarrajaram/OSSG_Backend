@@ -126,4 +126,19 @@ public class Inventory_Controller {
 		
 	}
 	
+	
+	@GetMapping("linuxbyid/{sid}")
+	public Inventory getByUsername(@PathVariable("sid") int sid)
+	{	
+		try {
+		return si.getLinuxById(sid);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@GetMapping("linuxchangelogslist")
+	public List<InventoryChangelog> getLinuxChangeLogList(){
+		return si.getAllLinuxChangeLog();
+	}
 }
