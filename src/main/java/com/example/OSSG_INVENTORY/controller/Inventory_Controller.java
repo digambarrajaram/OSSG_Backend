@@ -105,4 +105,16 @@ public class Inventory_Controller {
 		}
 	}
 	
+	@PostMapping("/inventorychangelog")
+	public String addToChaLog(@RequestBody InventoryChangelog ic) {
+		
+		try {
+			si.addToInvChaLog(ic);
+			return "Added to ChangeLog";
+		} catch (Exception e) {
+			return "Not Added to ChangeLog";
+		}
+		
+	}
+	
 }

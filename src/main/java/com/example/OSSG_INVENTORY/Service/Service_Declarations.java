@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 
 
@@ -26,4 +27,6 @@ public interface Service_Declarations {
 	public Users getByUsername(String username);
 	
 	public List<String> getLocation();
+	
+	public void addToInvChaLog(InventoryChangelog ic);
 }

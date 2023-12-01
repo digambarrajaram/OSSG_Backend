@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
+import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 import com.example.OSSG_INVENTORY.persistance.HardwareRepository;
+import com.example.OSSG_INVENTORY.persistance.InventoryChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryRepository;
 import com.example.OSSG_INVENTORY.persistance.UserRepository;
 
@@ -20,13 +22,15 @@ public class Service_Implementation implements Service_Declarations {
 	private InventoryRepository ir;
 	private HardwareRepository hr;
 	private UserRepository ur;
+	private InventoryChangelogRepository icr;
 
 	@Autowired
-	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur) {
+	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur, InventoryChangelogRepository icr) {
 		super();
 		this.ir = ir;
 		this.hr = hr;
 		this.ur = ur;
+		this.icr = icr;
 	}
 
 	@Override
@@ -89,6 +93,13 @@ public class Service_Implementation implements Service_Declarations {
 	public List<String> getLocation() {
 		// TODO Auto-generated method stub
 		return hr.getLocation();
+	}
+
+	@Override
+	@Transactional
+	public void addToInvChaLog(InventoryChangelog ic) {
+		// TODO Auto-generated method stub
+		 icr.save(ic);
 	}
 
 
