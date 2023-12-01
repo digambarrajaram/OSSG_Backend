@@ -40,13 +40,25 @@ public class Inventory {
 
 	@Column(name = "PROJECT_NAME")
 	private String PROJECT_NAME;
+	
+	@Column(name = "SUPPORT_STATUS")
+	private String SUPPORT_STATUS;
+	
+
+	public String getSUPPORT_STATUS() {
+		return SUPPORT_STATUS;
+	}
+
+	public void setSUPPORT_STATUS(String sUPPORT_STATUS) {
+		SUPPORT_STATUS = sUPPORT_STATUS;
+	}
 
 	public Inventory() {
 		super();
 	}
 
 	public Inventory(int sID, String sERVER_NAME, String pHYSICAL_IP, String oS, String eNVIRONMENT, String lOCATION,
-			String pUNE_NAT_IP, String bLR_NAT_IP, String pOWER_STATUS, String oWNER, String pROJECT_NAME) {
+			String pUNE_NAT_IP, String bLR_NAT_IP, String pOWER_STATUS, String oWNER, String pROJECT_NAME, String sUPPORT_STATUS) {
 		super();
 		SID = sID;
 		SERVER_NAME = sERVER_NAME;
@@ -59,6 +71,7 @@ public class Inventory {
 		POWER_STATUS = pOWER_STATUS;
 		OWNER = oWNER;
 		PROJECT_NAME = pROJECT_NAME;
+		SUPPORT_STATUS = sUPPORT_STATUS;
 	}
 
 	public int getSID() {
