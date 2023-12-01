@@ -26,4 +26,8 @@ public interface Service_Declarations {
 	public Users getByUsername(String username);
 	
 	public List<String> getLocation();
+	
+
+	public void changeLog(String assetno);
+	
 }

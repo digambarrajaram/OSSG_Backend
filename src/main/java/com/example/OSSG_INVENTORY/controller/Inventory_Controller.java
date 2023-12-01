@@ -97,12 +97,17 @@ public class Inventory_Controller {
 	
 	@GetMapping("location")
 	public List<String> getLocation()
-	{	
+	{
 		try {
 		return si.getLocation();
 		} catch (Exception e) {
 			return null;
 		}
 	}
+	@PostMapping("/save/{assetno}")
+    public void saveEntityWithCurrentTimestampAndDetails(@PathVariable("assetno")String assetno) {
+        // Save the entity with the current timestamp and other details, and return the saved entity
+        si.changeLog(assetno);
+    }
 	
 }
