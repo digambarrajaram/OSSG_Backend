@@ -1,5 +1,7 @@
 package com.example.OSSG_INVENTORY.Entity;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -112,7 +114,7 @@ public class HardwareChangelog {
 	private String principaleoservice;
 
 	@Column(name = "mtime")
-	private Date creationTimestamp = new Date();
+	private String creationTimestamp;
 
 	@Column(name = "user")
 	private String user;
@@ -122,7 +124,7 @@ public class HardwareChangelog {
 			String totalcores, String memory, String physicalhdd, String approvalno, String approvaldate, String pono,
 			String podate, String devamcwar, String warstdate, String wareddate, String amcstdate, String amceddate,
 			String expdate, String vdamcname, String deviceinsurance, String principaleosupport,
-			String principaleoservice, Date creationTimestamp, String user) {
+			String principaleoservice, String creationTimestamp, String user) {
 		super();
 		this.hid = hid;
 		this.assetno = assetno;
@@ -159,6 +161,12 @@ public class HardwareChangelog {
 	public HardwareChangelog() {
 		super();
 		// TODO Auto-generated constructor stub
+		 LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Format the date and time as a string
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        this.creationTimestamp=formattedDateTime;
 	}
 
 	public int getHid() {
@@ -385,11 +393,11 @@ public class HardwareChangelog {
 		this.principaleoservice = principaleoservice;
 	}
 
-	public Date getCreationTimestamp() {
+	public String getCreationTimestamp() {
 		return creationTimestamp;
 	}
 
-	public void setCreationTimestamp(Date creationTimestamp) {
+	public void setCreationTimestamp(String creationTimestamp) {
 		this.creationTimestamp = creationTimestamp;
 	}
 
