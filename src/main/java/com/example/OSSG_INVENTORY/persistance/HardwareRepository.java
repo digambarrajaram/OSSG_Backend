@@ -12,4 +12,7 @@ public interface HardwareRepository extends JpaRepository<Hardware, Integer>{
 //	@Query("DISTINCT location from Hardware")
 	@Query(value = "select DISTINCT location from hardware", nativeQuery = true)
 	public List<String> getLocation();
+	
+	@Query(value = "SELECT hid FROM Hardware ORDER BY hid DESC LIMIT 1", nativeQuery = true)
+	public Integer gethardId();
 }

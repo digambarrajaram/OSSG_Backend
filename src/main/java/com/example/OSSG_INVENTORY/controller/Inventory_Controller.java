@@ -128,7 +128,7 @@ public class Inventory_Controller {
 	
 	
 	@GetMapping("linuxbyid/{sid}")
-	public Inventory getByUsername(@PathVariable("sid") int sid)
+	public Inventory getLinuxById(@PathVariable("sid") int sid)
 	{	
 		try {
 		return si.getLinuxById(sid);
@@ -140,5 +140,31 @@ public class Inventory_Controller {
 	@GetMapping("linuxchangelogslist")
 	public List<InventoryChangelog> getLinuxChangeLogList(){
 		return si.getAllLinuxChangeLog();
+	}
+	
+	@GetMapping("getsid")
+	public Integer getId(){
+		return si.getId();
+	}
+	
+	
+	@GetMapping("hardwarebyid/{hid}")
+	public Hardware getHardwareById(@PathVariable("hid") int hid)
+	{	
+		try {
+		return si.getHardwareById(hid);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@GetMapping("hardwarechangelogslist")
+	public List<HardwareChangelog> getHardwareChangeLogList(){
+		return si.getAllHardwareChangeLog();
+	}
+	
+	@GetMapping("gethid")
+	public Integer getHid(){
+		return si.gethId();
 	}
 }

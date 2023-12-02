@@ -133,4 +133,32 @@ public class Service_Implementation implements Service_Declarations {
 		return icr.findAll();
 	}
 
+	@Override
+	@Transactional
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return ir.getId();
+	}
+
+	@Override
+	@Transactional
+	public Hardware getHardwareById(int hid) {
+		// TODO Auto-generated method stub
+		return hr.findById(hid).get();
+	}
+
+	@Override
+	@Transactional
+	public List<HardwareChangelog> getAllHardwareChangeLog() {
+		// TODO Auto-generated method stub
+		return hcr.findAll();
+	}
+
+	@Override
+	@Transactional
+	public Integer gethId() {
+		// TODO Auto-generated method stub
+		return hr.gethardId();
+	}
+
 }

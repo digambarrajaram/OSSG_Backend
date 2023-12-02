@@ -17,4 +17,8 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer>
 	 
 //	 @Query(value = "select inventory.*,(select projects.project_name from projects where projects.pid = inventory.pid) as pname from inventory;", nativeQuery = true)
 //	 public List<Inventory> getAllServers();
+	
+	@Query(value = "SELECT sid FROM Inventory ORDER BY sid DESC LIMIT 1", nativeQuery = true)
+	public Integer getId();
+
 }
