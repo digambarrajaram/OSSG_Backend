@@ -91,6 +91,9 @@ public class Hardware {
 	
 	@Column(name = "principaleoservice")
 	private String principaleoservice;
+	
+	@Column(name = "deleted")
+	private boolean deleted=false;
 
 	public Hardware() {
 		super();
@@ -102,7 +105,7 @@ public class Hardware {
 			String totalcores, String memory, String physicalhdd, String approvalno, String approvaldate, String pono,
 			String podate, String devamcwar, String warstdate, String wareddate, String amcstdate, String amceddate,
 			String expdate, String vdamcname, String deviceinsurance, String principaleosupport,
-			String principaleoservice) {
+			String principaleoservice, boolean deleted) {
 		super();
 		this.hid = hid;
 		this.assetno = assetno;
@@ -132,6 +135,7 @@ public class Hardware {
 		this.deviceinsurance = deviceinsurance;
 		this.principaleosupport = principaleosupport;
 		this.principaleoservice = principaleoservice;
+		this.deleted = deleted;
 	}
 
 	public int getHid() {
@@ -357,5 +361,14 @@ public class Hardware {
 	public void setPrincipaleoservice(String principaleoservice) {
 		this.principaleoservice = principaleoservice;
 	}
-		
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	
 }

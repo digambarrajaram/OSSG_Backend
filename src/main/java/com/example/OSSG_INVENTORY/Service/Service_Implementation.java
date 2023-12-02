@@ -1,7 +1,6 @@
 package com.example.OSSG_INVENTORY.Service;
 
-import java.util.List;
-
+import java.util.List;import org.hibernate.boot.query.BootQueryLogging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,17 +34,15 @@ public class Service_Implementation implements Service_Declarations {
 		this.ir = ir;
 		this.hr = hr;
 		this.ur = ur;
-
 		this.hcr = hcr;
-
 		this.icr = icr;
 
 	}
 
 	@Override
 	@Transactional
-	public List<Inventory> getAllServers() {
-		return ir.findAll();
+	public List<Inventory> getAllServers(boolean flag) {
+		return ir.getAll(flag);
 	}
 
 	@Override
@@ -63,9 +60,9 @@ public class Service_Implementation implements Service_Declarations {
 
 	@Override
 	@Transactional
-	public List<Hardware> getAllHardware() {
+	public List<Hardware> getAllHardware(boolean flag){
 		// TODO Auto-generated method stub
-		return hr.findAll();
+		return hr.getAll(flag);
 	}
 
 	@Override

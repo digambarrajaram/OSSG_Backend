@@ -16,8 +16,9 @@ public class Inventory_Controller {
 	}
 	
 	@GetMapping("serverlist")
-	public List<Inventory> getAllServers(){
-		return si.getAllServers();
+	public List<Inventory> getAllServers(@RequestBody Inventory flag){
+		System.out.println(flag.isDeleted());
+		return si.getAllServers(flag.isDeleted());
 	}
 
 	
@@ -45,8 +46,8 @@ public class Inventory_Controller {
 	}
 		
 	@GetMapping("hardwarelist")
-	public List<Hardware> getAllHardware(){
-		return si.getAllHardware();
+	public List<Hardware> getAllHardware(@RequestBody Hardware flag){
+		return si.getAllHardware(flag.isDeleted());
 	}
 
 	
@@ -167,5 +168,6 @@ public class Inventory_Controller {
 	public Integer getHid(){
 		return si.gethId();
 	}
+	
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
+import com.example.OSSG_INVENTORY.Entity.Inventory;
 
 public interface HardwareRepository extends JpaRepository<Hardware, Integer>{
 	
@@ -15,4 +16,8 @@ public interface HardwareRepository extends JpaRepository<Hardware, Integer>{
 	
 	@Query(value = "SELECT hid FROM Hardware ORDER BY hid DESC LIMIT 1", nativeQuery = true)
 	public Integer gethardId();
+	
+	@Query("from Hardware where deleted=?1")
+	public List<Hardware> getAll(boolean falg);
+	
 }

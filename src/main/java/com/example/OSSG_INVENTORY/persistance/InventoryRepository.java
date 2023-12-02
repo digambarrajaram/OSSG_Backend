@@ -20,5 +20,12 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer>
 	
 	@Query(value = "SELECT sid FROM Inventory ORDER BY sid DESC LIMIT 1", nativeQuery = true)
 	public Integer getId();
+	
+	@Query("from Inventory where deleted=?1")
+	public List<Inventory> getAll(boolean falg);
+	
+	//@Query(value = "update Inventory set d='true' where sid", nativeQuery = true)
+	
+	
 
 }

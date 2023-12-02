@@ -11,13 +11,13 @@ import com.example.OSSG_INVENTORY.Entity.Users;
 
 public interface Service_Declarations {
 	
-	public List<Inventory> getAllServers();
+	public List<Inventory> getAllServers(boolean flag);
 
 	public void addServer(Inventory inventory);
 	
 	public void deleteServer(int sid);
 	
-	public List<Hardware> getAllHardware();
+	public List<Hardware> getAllHardware(boolean flag);
 
 	public void addHardware(Hardware hardware);
 	
