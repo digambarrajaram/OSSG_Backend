@@ -167,4 +167,5 @@ public class Inventory_Controller {
 	public Integer getHid(){
 		return si.gethId();
 	}
+	
 }
