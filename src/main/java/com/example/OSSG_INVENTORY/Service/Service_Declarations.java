@@ -31,6 +31,18 @@ public interface Service_Declarations {
 	
 	public void addToInvChaLog(InventoryChangelog ic);
 
-	void changeLog(HardwareChangelog h);
+	public void changeLog(HardwareChangelog h);
+	
+	public Inventory getLinuxById(int sid);
+	
+	public List<InventoryChangelog> getAllLinuxChangeLog();
+	
+	public Integer getId();
+	
+	public Hardware getHardwareById(int hid);
+	
+	public List<HardwareChangelog> getAllHardwareChangeLog();
+	
+	public Integer gethId();
 
 }
