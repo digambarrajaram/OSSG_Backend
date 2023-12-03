@@ -1,5 +1,6 @@
 package com.example.OSSG_INVENTORY.Service;
 
+import java.util.Collections;
 import java.util.List;import org.hibernate.boot.query.BootQueryLogging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,7 +128,9 @@ public class Service_Implementation implements Service_Declarations {
 	@Transactional
 	public List<InventoryChangelog> getAllLinuxChangeLog() {
 		// TODO Auto-generated method stub
-		return icr.findAll();
+		List<InventoryChangelog> originallist = icr.findAll();
+		Collections.reverse(originallist);
+		return originallist;
 	}
 
 	@Override
@@ -148,7 +151,9 @@ public class Service_Implementation implements Service_Declarations {
 	@Transactional
 	public List<HardwareChangelog> getAllHardwareChangeLog() {
 		// TODO Auto-generated method stub
-		return hcr.findAll();
+		List<HardwareChangelog> originallist = hcr.findAll();
+		Collections.reverse(originallist);
+		return originallist;
 	}
 
 	@Override
