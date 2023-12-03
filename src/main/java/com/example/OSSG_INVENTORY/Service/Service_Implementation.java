@@ -55,7 +55,7 @@ public class Service_Implementation implements Service_Declarations {
 	@Override
 	@Transactional
 	public void deleteServer(int sid) {
-		ir.deleteById(sid);
+		ir.deletedServer(sid);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class Service_Implementation implements Service_Declarations {
 	@Transactional
 	public void deleteHardware(int hid) {
 		// TODO Auto-generated method stub
-		hr.deleteById(hid);
+		hr.deletedHardwareServer(hid);
 	}
 
 	@Override

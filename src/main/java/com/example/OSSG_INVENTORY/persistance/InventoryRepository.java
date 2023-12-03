@@ -26,6 +26,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer>
 	
 	//@Query(value = "update Inventory set d='true' where sid", nativeQuery = true)
 	
+	@Modifying
+	@Query(value = "update Inventory set deleted=TRUE where sid=?1", nativeQuery = true)
+	public void deletedServer(int sid);
 	
 
 }

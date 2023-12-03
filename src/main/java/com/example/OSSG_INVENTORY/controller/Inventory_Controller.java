@@ -15,10 +15,10 @@ public class Inventory_Controller {
 		this.si = si;
 	}
 	
-	@GetMapping("serverlist")
-	public List<Inventory> getAllServers(@RequestBody Inventory flag){
-		System.out.println(flag.isDeleted());
-		return si.getAllServers(flag.isDeleted());
+	@GetMapping("serverlist/{flag}")
+	public List<Inventory> getAllServers(@PathVariable("flag") boolean flag){
+//		System.out.println(flag.isDeleted());
+		return si.getAllServers(flag);
 	}
 
 	
@@ -45,9 +45,9 @@ public class Inventory_Controller {
 		
 	}
 		
-	@GetMapping("hardwarelist")
-	public List<Hardware> getAllHardware(@RequestBody Hardware flag){
-		return si.getAllHardware(flag.isDeleted());
+	@GetMapping("hardwarelist/{flag}")
+	public List<Hardware> getAllHardware(@PathVariable("flag") boolean flag){
+		return si.getAllHardware(flag);
 	}
 
 	
