@@ -18,7 +18,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer>
 //	 @Query(value = "select inventory.*,(select projects.project_name from projects where projects.pid = inventory.pid) as pname from inventory;", nativeQuery = true)
 //	 public List<Inventory> getAllServers();
 	
-	@Query(value = "SELECT sid FROM Inventory ORDER BY sid DESC LIMIT 1", nativeQuery = true)
+	@Query(value = "SELECT sid FROM inventory ORDER BY sid DESC LIMIT 1", nativeQuery = true)
 	public Integer getId();
 	
 	@Query("from Inventory where deleted=?1")
@@ -27,7 +27,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer>
 	//@Query(value = "update Inventory set d='true' where sid", nativeQuery = true)
 	
 	@Modifying
-	@Query(value = "update Inventory set deleted=TRUE where sid=?1", nativeQuery = true)
+	@Query(value = "update inventory set deleted=TRUE where sid=?1", nativeQuery = true)
 	public void deletedServer(int sid);
 	
 

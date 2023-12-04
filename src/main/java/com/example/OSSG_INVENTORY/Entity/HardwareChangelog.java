@@ -1,6 +1,8 @@
 package com.example.OSSG_INVENTORY.Entity;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -36,10 +38,11 @@ public class HardwareChangelog {
 		super();
 		// TODO Auto-generated constructor stub
 		 LocalDateTime currentDateTime = LocalDateTime.now();
+		 ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
 
         // Format the date and time as a string
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
-        String formattedDateTime = currentDateTime.format(formatter);
+        String formattedDateTime = now.format(formatter);
         this.mtime=formattedDateTime;
 	}
 
