@@ -21,18 +21,9 @@ public class Users {
 
 	@Column(name = "password")
 	private String password;
-
-	public Users() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Users(int uid, String username, String password) {
-		super();
-		this.uid = uid;
-		this.username = username;
-		this.password = password;
-	}
+	
+	@Column(name = "isadmin")
+	private boolean isadmin = false;
 
 	public int getUid() {
 		return uid;
@@ -57,6 +48,29 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public boolean isIsadmin() {
+		return isadmin;
+	}
+
+	public void setIsadmin(boolean isadmin) {
+		this.isadmin = isadmin;
+	}
+
+	public Users(int uid, String username, String password, boolean isadmin) {
+		super();
+		this.uid = uid;
+		this.username = username;
+		this.password = password;
+		this.isadmin = isadmin;
+	}
+
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	
 	
 }
