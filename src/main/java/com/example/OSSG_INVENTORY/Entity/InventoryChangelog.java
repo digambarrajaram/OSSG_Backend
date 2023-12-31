@@ -16,6 +16,9 @@ public class InventoryChangelog {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sid")
 	private int sid;
+	
+	@Column(name = "ip")
+	private String ip;
 
 	@Column(name = "uniqueid")
 	private int uniqueid;
@@ -61,13 +64,22 @@ public class InventoryChangelog {
 	        this.mtime=formattedDateTime;
 	}
 
-	public InventoryChangelog(int sid, int uniqueid, String remark, String mtime, String user) {
+	public InventoryChangelog(int sid, int uniqueid, String remark, String mtime, String user, String ip) {
 		super();
 		this.sid = sid;
 		this.uniqueid = uniqueid;
 		this.remark = remark;
 		this.mtime = mtime;
 		this.user = user;
+		this.ip = ip;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 	public int getSid() {

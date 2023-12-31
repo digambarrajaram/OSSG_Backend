@@ -46,7 +46,7 @@ public class HardwareChangelog {
         this.mtime=formattedDateTime;
 	}
 
-	public HardwareChangelog(int id, int uniqueid, String remark, String mtime, String user) {
+	public HardwareChangelog(int id, int uniqueid, String remark, String mtime, String user, String ip) {
 		super();
 		this.id = id;
 		this.uniqueid = uniqueid;
@@ -54,6 +54,7 @@ public class HardwareChangelog {
 		this.mtime = mtime;
 		this.user = user;
 	}
+
 
 	public int getId() {
 		return id;
