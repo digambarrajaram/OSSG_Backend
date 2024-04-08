@@ -47,6 +47,23 @@ public class Inventory {
 	@Column(name = "deleted")
 	private boolean deleted=false;
 	
+	@Column(name = "drshiftingstatus")
+	private  String drshiftingstatus;
+	
+	@Column(name = "pammapping")
+	private String pammapping;
+	
+	@Column(name = "nagiosconfigured")
+	private String nagiosconfigured;
+	
+	@Column(name = "antivirus")
+	private String antivirus;
+	
+	@Column(name = "cis")
+	private String cis;
+	
+	@Column(name = "secondaryowner")
+	private String secondaryowner;
 
 	public Inventory() {
 		super();
@@ -55,7 +72,7 @@ public class Inventory {
 
 	public Inventory(int sID, String sERVER_NAME, String pHYSICAL_IP, String oS, String eNVIRONMENT, String lOCATION,
 			String pUNE_NAT_IP, String bLR_NAT_IP, String pOWER_STATUS, String oWNER, String pROJECT_NAME,
-			String sUPPORT_STATUS, boolean deleted) {
+			String sUPPORT_STATUS, boolean deleted, String drshiftingstatus, String pammapping, String nagiosconfigured, String antivirus, String cis, String secondaryowner) {
 		super();
 		SID = sID;
 		SERVER_NAME = sERVER_NAME;
@@ -70,6 +87,72 @@ public class Inventory {
 		PROJECT_NAME = pROJECT_NAME;
 		SUPPORT_STATUS = sUPPORT_STATUS;
 		this.deleted = deleted;
+		this.drshiftingstatus = drshiftingstatus;
+		this.pammapping = pammapping;
+		this.nagiosconfigured = nagiosconfigured;
+		this.antivirus = antivirus;
+		this.cis = cis;
+		this.secondaryowner = secondaryowner;
+	}
+
+
+	public String getDrshiftingstatus() {
+		return drshiftingstatus;
+	}
+
+
+	public void setDrshiftingstatus(String drshiftingstatus) {
+		this.drshiftingstatus = drshiftingstatus;
+	}
+
+
+	public String getPammapping() {
+		return pammapping;
+	}
+
+
+	public void setPammapping(String pammapping) {
+		this.pammapping = pammapping;
+	}
+
+
+	public String getNagiosconfigured() {
+		return nagiosconfigured;
+	}
+
+
+	public void setNagiosconfigured(String nagiosconfigured) {
+		this.nagiosconfigured = nagiosconfigured;
+	}
+
+
+	public String getAntivirus() {
+		return antivirus;
+	}
+
+
+	public void setAntivirus(String antivirus) {
+		this.antivirus = antivirus;
+	}
+
+
+	public String getCis() {
+		return cis;
+	}
+
+
+	public void setCis(String cis) {
+		this.cis = cis;
+	}
+
+
+	public String getSecondaryowner() {
+		return secondaryowner;
+	}
+
+
+	public void setSecondaryowner(String secondaryowner) {
+		this.secondaryowner = secondaryowner;
 	}
 
 
