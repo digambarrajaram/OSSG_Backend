@@ -6,6 +6,8 @@ import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
 import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
+import com.example.OSSG_INVENTORY.Entity.Software;
+import com.example.OSSG_INVENTORY.Entity.SoftwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 
 
@@ -40,9 +42,24 @@ public interface Service_Declarations {
 	public Integer getId();
 	
 	public Hardware getHardwareById(int hid);
+
 	
 	public List<HardwareChangelog> getAllHardwareChangeLog();
 	
 	public Integer gethId();
+	
+	public Software getSoftwareById(int sofid);
+	
+	public void changeLog(SoftwareChangelog s);
+	
+	public void addSoftware(Software software);
+	
+	public Integer getsofId();
+	
+	public void deleteSoftware(int sofid);
+	
+	public List<Software> getAllSoftware(boolean flag);
+	
+	public List<SoftwareChangelog> getAllSoftwareChangeLog();
 
 }

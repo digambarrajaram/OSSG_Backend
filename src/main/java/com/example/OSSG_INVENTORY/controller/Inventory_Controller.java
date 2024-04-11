@@ -169,5 +169,64 @@ public class Inventory_Controller {
 		return si.gethId();
 	}
 	
+	@GetMapping("softwarebyid/{sofid}")
+	public Software getSoftwareById(@PathVariable("sofid") int sofid)
+	{	
+		try {
+		return si.getSoftwareById(sofid);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@PostMapping("/softwarechangelog")
+    public String softwareChangeLog(@RequestBody SoftwareChangelog socl) {
+		try {
+			si.changeLog(socl);
+			return "Added to Software ChangeLog";
+		} catch (Exception e) {
+			return "Not Added to Software ChangeLog";
+		}
+    }
+	
+	
+	@PostMapping("/addsoftware")
+	public String addSoftware(@RequestBody Software software) {
+		
+		try {
+			si.addSoftware(software);
+			return "Software Added";
+		} catch (Exception e) {
+			return "Software Not Added";
+		}
+	}
+	
+	@GetMapping("getsofid")
+	public Integer getSofid(){
+		return si.getsofId();
+	}
+	
+	
+	@PostMapping("/deletesoftware/{sofid}")
+	public String deleteSoftware(@PathVariable("sofid") int sofid) {
+		
+		try {
+			si.deleteSoftware(sofid);
+			return "Software Deleted";
+		} catch (Exception e) {
+			return "Software Not Deleted";
+		}
+		
+	}
+	
+	@GetMapping("softwarelist/{flag}")
+	public List<Software> getAllSoftware(@PathVariable("flag") boolean flag){
+		return si.getAllSoftware(flag);
+	}
+	
+	@GetMapping("softwarechangelogslist")
+	public List<SoftwareChangelog> getSoftwareChangeLogList(){
+		return si.getAllSoftwareChangeLog();
+	}
 	
 }

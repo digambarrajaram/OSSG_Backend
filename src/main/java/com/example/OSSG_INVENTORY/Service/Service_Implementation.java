@@ -9,11 +9,15 @@ import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
 import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
+import com.example.OSSG_INVENTORY.Entity.Software;
+import com.example.OSSG_INVENTORY.Entity.SoftwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
 import com.example.OSSG_INVENTORY.persistance.HardwareChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.HardwareRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryRepository;
+import com.example.OSSG_INVENTORY.persistance.SoftwareChangelogRepository;
+import com.example.OSSG_INVENTORY.persistance.SoftwareRepository;
 import com.example.OSSG_INVENTORY.persistance.UserRepository;
 
 import jakarta.transaction.Transactional;
@@ -24,19 +28,23 @@ public class Service_Implementation implements Service_Declarations {
 	private InventoryRepository ir;
 	private HardwareRepository hr;
 	private UserRepository ur;
+	private SoftwareRepository sr;
 
 	private HardwareChangelogRepository hcr;
 	private InventoryChangelogRepository icr;
+	private SoftwareChangelogRepository scr;
 
 	@Autowired
-	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur, InventoryChangelogRepository icr,HardwareChangelogRepository hcr) {
+	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur,SoftwareRepository sr, InventoryChangelogRepository icr,HardwareChangelogRepository hcr, SoftwareChangelogRepository scr) {
 
 		super();
 		this.ir = ir;
 		this.hr = hr;
 		this.ur = ur;
+		this.sr = sr;
 		this.hcr = hcr;
 		this.icr = icr;
+		this.scr = scr;
 
 	}
 
@@ -163,6 +171,56 @@ public class Service_Implementation implements Service_Declarations {
 		return hr.gethardId();
 	}
 
-
+	@Override
+	@Transactional
+	public Software getSoftwareById(int sofid) {
+		// TODO Auto-generated method stub
+		return sr.findById(sofid).get();
+	}
+	
+	@Override
+	@Transactional
+	public void changeLog(SoftwareChangelog s) {
+		// TODO Auto-generated method stub
+		scr.save(s);
+		
+	}
+	
+	@Override
+	@Transactional
+	public void addSoftware(Software software) {
+		// TODO Auto-generated method stub
+		sr.save(software);
+	}
+	
+	@Override
+	@Transactional
+	public Integer getsofId() {
+		// TODO Auto-generated method stub
+		return sr.getsofId();
+	}
+	
+	@Override
+	@Transactional
+	public void deleteSoftware(int sofid) {
+		// TODO Auto-generated method stub
+		sr.deletedSoftwareServer(sofid);
+	}
+	
+	@Override
+	@Transactional
+	public List<Software> getAllSoftware(boolean flag){
+		// TODO Auto-generated method stub
+		return sr.getAll(flag);
+	}
+	
+	@Override
+	@Transactional
+	public List<SoftwareChangelog> getAllSoftwareChangeLog() {
+		// TODO Auto-generated method stub
+		List<SoftwareChangelog> originallist = scr.findAll();
+		Collections.reverse(originallist);
+		return originallist;
+	}
 
 }
