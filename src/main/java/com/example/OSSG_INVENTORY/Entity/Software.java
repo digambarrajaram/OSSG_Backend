@@ -220,14 +220,16 @@ public class Software {
 
 
 
-	public String getWfms_no() {
+
+
+	public String getApp_wfms_no() {
 		return app_wfms_no;
 	}
 
 
 
-	public void setWfms_no(String wfms_no) {
-		this.app_wfms_no = wfms_no;
+	public void setApp_wfms_no(String app_wfms_no) {
+		this.app_wfms_no = app_wfms_no;
 	}
 
 

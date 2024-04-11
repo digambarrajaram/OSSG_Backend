@@ -1,9 +1,12 @@
 package com.example.OSSG_INVENTORY.Service;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;import org.hibernate.boot.query.BootQueryLogging;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
@@ -222,5 +225,5 @@ public class Service_Implementation implements Service_Declarations {
 		Collections.reverse(originallist);
 		return originallist;
 	}
-
+	
 }
