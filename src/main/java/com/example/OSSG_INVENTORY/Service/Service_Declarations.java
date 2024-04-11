@@ -2,6 +2,7 @@ package com.example.OSSG_INVENTORY.Service;
 
 import java.util.List;
 
+import com.example.OSSG_INVENTORY.Entity.FileUploadResponse;
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
@@ -61,5 +62,7 @@ public interface Service_Declarations {
 	public List<Software> getAllSoftware(boolean flag);
 	
 	public List<SoftwareChangelog> getAllSoftwareChangeLog();
+
+	public void fileSaveDB(FileUploadResponse fr);
 
 }

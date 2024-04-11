@@ -1,10 +1,21 @@
 package com.example.OSSG_INVENTORY.controller;
 
 
+import java.io.IOException;
+import java.net.http.HttpHeaders;
 import java.util.List;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.OSSG_INVENTORY.Entity.*;
 import com.example.OSSG_INVENTORY.Service.Service_Implementation;
+
+import io.micrometer.common.util.StringUtils;
 
 @RestController
 @RequestMapping("/inventory")
@@ -229,4 +240,43 @@ public class Inventory_Controller {
 		return si.getAllSoftwareChangeLog();
 	}
 	
+	@PostMapping("/uploadfile")
+	public String uploadFile(@RequestParam("file") MultipartFile multipartFile) throws IOException{
+		
+		String fileName = org.springframework.util.StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		long size = multipartFile.getSize();
+		
+		System.out.println(size);
+		try {
+			String fileCode = si.saveFile(fileName, multipartFile);
+			String u = "/downloadfile/"+fileCode;
+			FileUploadResponse resp = new FileUploadResponse(fileName, u, size);
+			si.fileSaveDB(resp);
+		}catch(Error e){
+			return "File Upload Failed "+e;
+		}
+		
+		return "File Uploaded";
+		
+	}
+	
+	@GetMapping("/downloadfile/{fileCode}")
+	public ResponseEntity<?> downloadFile(@PathVariable("fileCode") String fileCode) throws IOException {
+		
+		try {
+			
+			Resource fileAsResource = si.downloadFile(fileCode);
+			
+			String contentType = "application/octet-stream";
+			String headerValue = "attachment; filename=\"" + fileAsResource.getFilename() +"\"";
+			
+			return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+					.header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, headerValue)
+					.body(fileAsResource);
+			
+		}catch(Error e) {
+			return new ResponseEntity<>("File not Found", HttpStatus.NOT_FOUND);
+		}
+	
+	}
 }

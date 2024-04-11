@@ -1,13 +1,26 @@
 package com.example.OSSG_INVENTORY.Service;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Collections;
-import java.util.List;import org.hibernate.boot.query.BootQueryLogging;
+import java.util.List;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.boot.query.BootQueryLogging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import lombok.*;
 
+import com.example.OSSG_INVENTORY.Entity.FileUploadResponse;
 import com.example.OSSG_INVENTORY.Entity.Hardware;
 import com.example.OSSG_INVENTORY.Entity.HardwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Inventory;
@@ -15,6 +28,7 @@ import com.example.OSSG_INVENTORY.Entity.InventoryChangelog;
 import com.example.OSSG_INVENTORY.Entity.Software;
 import com.example.OSSG_INVENTORY.Entity.SoftwareChangelog;
 import com.example.OSSG_INVENTORY.Entity.Users;
+import com.example.OSSG_INVENTORY.persistance.FileUploadResponseRepository;
 import com.example.OSSG_INVENTORY.persistance.HardwareChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.HardwareRepository;
 import com.example.OSSG_INVENTORY.persistance.InventoryChangelogRepository;
@@ -23,10 +37,13 @@ import com.example.OSSG_INVENTORY.persistance.SoftwareChangelogRepository;
 import com.example.OSSG_INVENTORY.persistance.SoftwareRepository;
 import com.example.OSSG_INVENTORY.persistance.UserRepository;
 
+import jakarta.persistence.Table;
 import jakarta.transaction.Transactional;
 
 @Service
 public class Service_Implementation implements Service_Declarations {
+	
+	private Path foundFile;
 
 	private InventoryRepository ir;
 	private HardwareRepository hr;
@@ -36,9 +53,13 @@ public class Service_Implementation implements Service_Declarations {
 	private HardwareChangelogRepository hcr;
 	private InventoryChangelogRepository icr;
 	private SoftwareChangelogRepository scr;
+	
+	private FileUploadResponseRepository fur;
+	
+	
 
 	@Autowired
-	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur,SoftwareRepository sr, InventoryChangelogRepository icr,HardwareChangelogRepository hcr, SoftwareChangelogRepository scr) {
+	public Service_Implementation(InventoryRepository ir, HardwareRepository hr, UserRepository ur,SoftwareRepository sr,FileUploadResponseRepository fur, InventoryChangelogRepository icr,HardwareChangelogRepository hcr, SoftwareChangelogRepository scr) {
 
 		super();
 		this.ir = ir;
@@ -48,6 +69,7 @@ public class Service_Implementation implements Service_Declarations {
 		this.hcr = hcr;
 		this.icr = icr;
 		this.scr = scr;
+		this.fur = fur;
 
 	}
 
@@ -224,6 +246,45 @@ public class Service_Implementation implements Service_Declarations {
 		List<SoftwareChangelog> originallist = scr.findAll();
 		Collections.reverse(originallist);
 		return originallist;
+	}
+	
+	
+	public static String saveFile(String fileName, MultipartFile multipartfile) throws IOException {
+		Path uploadDirectory = Paths.get("/home/iauser/Downloads/FILES");
+		
+		String fileCode = RandomStringUtils.randomAlphanumeric(8);
+		try(InputStream inputStream = multipartfile.getInputStream()){
+			Path filePath = uploadDirectory.resolve(fileCode + "-"+ fileName);
+			Files.copy(inputStream,  filePath, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException ioe) {
+			throw new IOException("Error Saving uploaded file: "+ fileName, ioe);
+		}
+		
+		return fileCode;
+	}
+	
+	public Resource downloadFile(String fileCode) throws IOException {
+		Path uploadDirector = Paths.get("/home/iauser/Downloads/FILES");
+		
+		Files.list(uploadDirector).forEach(file -> {
+			if(file.getFileName().toString().startsWith(fileCode)) {
+				foundFile = file;
+				return;
+			}
+		});
+		
+		if(foundFile != null) {
+			return new UrlResource(foundFile.toUri());
+		}
+		return null;
+	}
+	
+	@Override
+	@Transactional
+	public void fileSaveDB(FileUploadResponse fr) {
+		// TODO Auto-generated method stub
+		fur.save(fr);
+		
 	}
 	
 }
