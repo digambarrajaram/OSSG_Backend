@@ -53,6 +53,12 @@ public class Software {
 	@Column(name = "vendor_name")
 	private String vendor_name;
 	
+	@Column(name = "downloaduri")
+	private String downloaduri;
+	
+
+
+
 	@Column(name = "deleted")
 	private boolean deleted=false;
 	
@@ -182,7 +188,15 @@ public class Software {
 		this.asc_enddate = asc_enddate;
 	}
 
+	public String getDownloaduri() {
+		return downloaduri;
+	}
 
+
+
+	public void setDownloaduri(String downloaduri) {
+		this.downloaduri = downloaduri;
+	}
 
 	public String getNo_of_lic() {
 		return no_of_lic;

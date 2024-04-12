@@ -19,5 +19,12 @@ public interface SoftwareRepository extends JpaRepository<Software, Integer>{
 	@Modifying
 	@Query(value = "update software set deleted=TRUE where sofid=?1", nativeQuery = true)
 	public void deletedSoftwareServer(int sofid);
+	
+	@Modifying
+	@Query(value = "update software set downloaduri=?1 where sofid=?2", nativeQuery = true)
+	public void adddownloadurl(String filename, String sofid);
+	
+	@Query(value = "SELECT downloaduri FROM software WHERE sofid=?1", nativeQuery = true)
+	public String getdownloaduri(String sofid);
 
 }

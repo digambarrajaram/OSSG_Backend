@@ -3,6 +3,10 @@ package com.example.OSSG_INVENTORY.controller;
 
 import java.io.IOException;
 import java.net.http.HttpHeaders;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.core.io.Resource;
@@ -241,17 +245,26 @@ public class Inventory_Controller {
 	}
 	
 	@PostMapping("/uploadfile")
-	public String uploadFile(@RequestParam("file") MultipartFile multipartFile) throws IOException{
+	public String uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("sofid") String sofid, @RequestParam("user") String user) throws IOException{
 		
+		 LocalDateTime currentDateTime = LocalDateTime.now();
+		 ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
+
+      // Format the date and time as a string
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
+      String formattedDateTime = now.format(formatter);
+      String mtime=formattedDateTime;
+      
 		String fileName = org.springframework.util.StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		long size = multipartFile.getSize();
 		
-		System.out.println(size);
+		System.out.println(sofid);
 		try {
 			String fileCode = si.saveFile(fileName, multipartFile);
 			String u = "/downloadfile/"+fileCode;
-			FileUploadResponse resp = new FileUploadResponse(fileName, u, size);
+			FileUploadResponse resp = new FileUploadResponse(fileName, u, size, sofid, user, mtime);
 			si.fileSaveDB(resp);
+			si.adddownloaduri(u, sofid);
 		}catch(Error e){
 			return "File Upload Failed "+e;
 		}
@@ -278,5 +291,14 @@ public class Inventory_Controller {
 			return new ResponseEntity<>("File not Found", HttpStatus.NOT_FOUND);
 		}
 	
+	}
+	
+	@GetMapping("/download/{sofid}")
+	public String download(@PathVariable("sofid") String sofid) {
+		try {
+			return si.getdownloaduri(sofid);
+			} catch (Exception e) {
+				return "Download Url not found";
+			}
 	}
 }

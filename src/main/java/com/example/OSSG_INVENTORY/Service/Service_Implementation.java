@@ -287,4 +287,18 @@ public class Service_Implementation implements Service_Declarations {
 		
 	}
 	
+	@Override
+	@Transactional
+	public String getdownloaduri(String sofid) {
+		// TODO Auto-generated method stub
+		return sr.getdownloaduri(sofid);
+	}
+	
+	@Override
+	@Transactional
+	public void adddownloaduri(String filename, String sofid) {
+		// TODO Auto-generated method stub
+		 sr.adddownloadurl(filename,sofid);
+	}
+	
 }

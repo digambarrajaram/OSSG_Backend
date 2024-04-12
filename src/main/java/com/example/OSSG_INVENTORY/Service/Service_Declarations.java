@@ -65,4 +65,8 @@ public interface Service_Declarations {
 
 	public void fileSaveDB(FileUploadResponse fr);
 
+	public String getdownloaduri(String sofid);
+
+	public void adddownloaduri(String filename, String sofid);
+
 }
