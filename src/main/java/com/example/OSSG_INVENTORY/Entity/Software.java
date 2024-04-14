@@ -56,7 +56,8 @@ public class Software {
 	@Column(name = "downloaduri")
 	private String downloaduri;
 	
-
+	@Column(name = "oem_name")
+	private String oem_name;
 
 
 	@Column(name = "deleted")
@@ -71,7 +72,7 @@ public class Software {
 
 
 	public Software(int sofid, String soft_name, String approval_no, String approval_date, String po_no, String po_date,
-			String asc_startdate, String asc_enddate, String no_of_lic, String fin_year,String app_wfms_no, String po_wfms_no,String remark, boolean deleted, String renewal, String vendor_name) {
+			String asc_startdate, String asc_enddate, String no_of_lic, String fin_year,String app_wfms_no, String po_wfms_no,String remark, boolean deleted, String renewal, String vendor_name, String oem_name) {
 		super();
 		this.sofid = sofid;
 		this.soft_name = soft_name;
@@ -89,8 +90,21 @@ public class Software {
 		this.renewal = renewal;
 		this.vendor_name = vendor_name;
 		this.po_wfms_no = po_wfms_no;
+		this.oem_name = oem_name;
 	}
 
+
+
+
+	public String getOem_name() {
+		return oem_name;
+	}
+
+
+
+	public void setOem_name(String oem_name) {
+		this.oem_name = oem_name;
+	}
 
 
 
@@ -181,8 +195,6 @@ public class Software {
 	public String getAsc_enddate() {
 		return asc_enddate;
 	}
-
-
 
 	public void setAsc_enddate(String asc_enddate) {
 		this.asc_enddate = asc_enddate;
