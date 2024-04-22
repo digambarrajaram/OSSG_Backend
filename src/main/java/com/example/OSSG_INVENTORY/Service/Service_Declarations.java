@@ -68,5 +68,7 @@ public interface Service_Declarations {
 	public String getdownloaduri(String sofid);
 
 	public void adddownloaduri(String filename, String sofid);
+	
+	public List<FileUploadResponse> getdownloadinfo(String sofid);
 
 }

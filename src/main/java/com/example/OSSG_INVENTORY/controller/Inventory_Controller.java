@@ -301,4 +301,13 @@ public class Inventory_Controller {
 				return "Download Url not found";
 			}
 	}
+	
+	
+	@GetMapping("/downloadinfo/{sofid}")
+	public List<FileUploadResponse> downloadinfo(@PathVariable("sofid") String sofid) {
+			
+//		System.out.println(si.getdownloadinfo(sofid));
+			return si.getdownloadinfo(sofid);
+			
+	}
 }

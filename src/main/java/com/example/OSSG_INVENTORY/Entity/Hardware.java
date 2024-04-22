@@ -11,6 +11,43 @@ public class Hardware {
 	@Column(name = "hid")
 	private int hid;
 
+	//newly added
+	@Column(name = "hardwarecategory")
+	private String hardwarecategory;
+	
+	//newly added
+	@Column(name = "oem")
+	private String oem;
+	
+	//newly added
+	@Column(name = "awe")
+	private String awe;
+	
+	//newly added
+	@Column(name = "wfmsno1")
+	private String wfmsno1;
+	
+	//newly added
+	@Column(name = "wfmsno2")
+	private String wfmsno2;
+	
+	//newly added
+	@Column(name = "machinetype")
+	private String machinetype;
+	
+	//newly added
+	@Column(name = "modeltype")
+	private String modeltype;
+	
+	//newly added
+	@Column(name = "model")
+	private String model;
+		
+	//newly added
+	@Column(name = "remark")
+	private String remark;
+		
+	
 	@Column(name = "assetno")
 	private String assetno;
 
@@ -100,14 +137,24 @@ public class Hardware {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Hardware(int hid, String assetno, String deviceserialno, String ilophysicalip, String devicetype,
-			String modelno, String cpuseries, String project, String location, String socket, String corepercpu,
-			String totalcores, String memory, String physicalhdd, String approvalno, String approvaldate, String pono,
-			String podate, String devamcwar, String warstdate, String wareddate, String amcstdate, String amceddate,
-			String expdate, String vdamcname, String deviceinsurance, String principaleosupport,
-			String principaleoservice, boolean deleted) {
+	public Hardware(int hid, String hardwarecategory, String oem, String awe, String wfmsno1, String wfmsno2,
+			String machinetype, String modeltype, String model, String remark, String assetno, String deviceserialno,
+			String ilophysicalip, String devicetype, String modelno, String cpuseries, String project, String location,
+			String socket, String corepercpu, String totalcores, String memory, String physicalhdd, String approvalno,
+			String approvaldate, String pono, String podate, String devamcwar, String warstdate, String wareddate,
+			String amcstdate, String amceddate, String expdate, String vdamcname, String deviceinsurance,
+			String principaleosupport, String principaleoservice, boolean deleted) {
 		super();
 		this.hid = hid;
+		this.hardwarecategory = hardwarecategory;
+		this.oem = oem;
+		this.awe = awe;
+		this.wfmsno1 = wfmsno1;
+		this.wfmsno2 = wfmsno2;
+		this.machinetype = machinetype;
+		this.modeltype = modeltype;
+		this.model = model;
+		this.remark = remark;
 		this.assetno = assetno;
 		this.deviceserialno = deviceserialno;
 		this.ilophysicalip = ilophysicalip;
@@ -144,6 +191,78 @@ public class Hardware {
 
 	public void setHid(int hid) {
 		this.hid = hid;
+	}
+
+	public String getHardwarecategory() {
+		return hardwarecategory;
+	}
+
+	public void setHardwarecategory(String hardwarecategory) {
+		this.hardwarecategory = hardwarecategory;
+	}
+
+	public String getOem() {
+		return oem;
+	}
+
+	public void setOem(String oem) {
+		this.oem = oem;
+	}
+
+	public String getAwe() {
+		return awe;
+	}
+
+	public void setAwe(String awe) {
+		this.awe = awe;
+	}
+
+	public String getWfmsno1() {
+		return wfmsno1;
+	}
+
+	public void setWfmsno1(String wfmsno1) {
+		this.wfmsno1 = wfmsno1;
+	}
+
+	public String getWfmsno2() {
+		return wfmsno2;
+	}
+
+	public void setWfmsno2(String wfmsno2) {
+		this.wfmsno2 = wfmsno2;
+	}
+
+	public String getMachinetype() {
+		return machinetype;
+	}
+
+	public void setMachinetype(String machinetype) {
+		this.machinetype = machinetype;
+	}
+
+	public String getModeltype() {
+		return modeltype;
+	}
+
+	public void setModeltype(String modeltype) {
+		this.modeltype = modeltype;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public String getAssetno() {

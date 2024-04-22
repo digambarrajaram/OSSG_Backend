@@ -301,4 +301,11 @@ public class Service_Implementation implements Service_Declarations {
 		 sr.adddownloadurl(filename,sofid);
 	}
 	
+	@Override
+	@Transactional
+	public List<FileUploadResponse> getdownloadinfo(String sofid) {
+		// TODO Auto-generated method stub
+		 return fur.getdownloadinfo(sofid);
+	}
+	
 }
