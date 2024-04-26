@@ -19,49 +19,29 @@ public class Hardware {
 	@Column(name = "oem")
 	private String oem;
 	
+	@Column(name = "vdamcname")
+	private String vdamcname;
+	
 	//newly added
 	@Column(name = "awe")
 	private String awe;
 	
-	//newly added
-	@Column(name = "wfmsno1")
-	private String wfmsno1;
-	
-	//newly added
-	@Column(name = "wfmsno2")
-	private String wfmsno2;
-	
-	//newly added
-	@Column(name = "machinetype")
-	private String machinetype;
-	
-	//newly added
-	@Column(name = "modeltype")
-	private String modeltype;
-	
-	//newly added
-	@Column(name = "model")
-	private String model;
-		
-	//newly added
-	@Column(name = "remark")
-	private String remark;
-		
-	
 	@Column(name = "assetno")
 	private String assetno;
-
-	@Column(name = "deviceserialno")
-	private String deviceserialno;
-
+	
+	@Column(name = "serialno")
+	private String serialno;	
+	
 	@Column(name = "ilophysicalip")
 	private String ilophysicalip;
-
-	@Column(name = "devicetype")
-	private String devicetype;
-
-	@Column(name = "modelno")
-	private String modelno;
+	
+	@Column(name = "typeoros")
+	private String typeoros;
+	
+	
+	@Column(name = "modela")
+	private String modela;
+	
 	
 	@Column(name = "cpuseries")
 	private String cpuseries;
@@ -93,14 +73,18 @@ public class Hardware {
 	@Column(name = "approvaldate")
 	private String approvaldate;
 	
+	
+	@Column(name = "approvalwfmsno")
+	private String approvalwfmsno;
+	
 	@Column(name = "pono")
 	private String pono;
 	
 	@Column(name = "podate")
 	private String podate;
 	
-	@Column(name = "devamcwar")
-	private String devamcwar;
+	@Column(name = "powfmsno")
+	private String powfmsno;
 	
 	@Column(name = "warstdate")
 	private String warstdate;
@@ -114,20 +98,22 @@ public class Hardware {
 	@Column(name = "amceddate")
 	private String amceddate;
 	
-	@Column(name = "expdate")
-	private String expdate;
-	
-	@Column(name = "vdamcname")
-	private String vdamcname;
-	
 	@Column(name = "deviceinsurance")
 	private String deviceinsurance;
 	
 	@Column(name = "principaleosupport")
 	private String principaleosupport;
 	
-	@Column(name = "principaleoservice")
-	private String principaleoservice;
+	@Column(name = "machinetype")
+	private String machinetype;
+	
+	@Column(name = "modelb")
+	private String modelb;
+	
+	
+	@Column(name = "remark")
+	private String remark;
+	
 	
 	@Column(name = "deleted")
 	private boolean deleted=false;
@@ -137,29 +123,23 @@ public class Hardware {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Hardware(int hid, String hardwarecategory, String oem, String awe, String wfmsno1, String wfmsno2,
-			String machinetype, String modeltype, String model, String remark, String assetno, String deviceserialno,
-			String ilophysicalip, String devicetype, String modelno, String cpuseries, String project, String location,
-			String socket, String corepercpu, String totalcores, String memory, String physicalhdd, String approvalno,
-			String approvaldate, String pono, String podate, String devamcwar, String warstdate, String wareddate,
-			String amcstdate, String amceddate, String expdate, String vdamcname, String deviceinsurance,
-			String principaleosupport, String principaleoservice, boolean deleted) {
+	public Hardware(int hid, String hardwarecategory, String oem, String vdamcname, String awe, String assetno,
+			String serialno, String ilophysicalip, String typeoros, String modela, String cpuseries, String project,
+			String location, String socket, String corepercpu, String totalcores, String memory, String physicalhdd,
+			String approvalno, String approvaldate, String approvalwfmsno, String pono, String podate, String powfmsno,
+			String warstdate, String wareddate, String amcstdate, String amceddate, String deviceinsurance,
+			String principaleosupport, String machinetype, String modelb, String remark, boolean deleted) {
 		super();
 		this.hid = hid;
 		this.hardwarecategory = hardwarecategory;
 		this.oem = oem;
+		this.vdamcname = vdamcname;
 		this.awe = awe;
-		this.wfmsno1 = wfmsno1;
-		this.wfmsno2 = wfmsno2;
-		this.machinetype = machinetype;
-		this.modeltype = modeltype;
-		this.model = model;
-		this.remark = remark;
 		this.assetno = assetno;
-		this.deviceserialno = deviceserialno;
+		this.serialno = serialno;
 		this.ilophysicalip = ilophysicalip;
-		this.devicetype = devicetype;
-		this.modelno = modelno;
+		this.typeoros = typeoros;
+		this.modela = modela;
 		this.cpuseries = cpuseries;
 		this.project = project;
 		this.location = location;
@@ -170,18 +150,19 @@ public class Hardware {
 		this.physicalhdd = physicalhdd;
 		this.approvalno = approvalno;
 		this.approvaldate = approvaldate;
+		this.approvalwfmsno = approvalwfmsno;
 		this.pono = pono;
 		this.podate = podate;
-		this.devamcwar = devamcwar;
+		this.powfmsno = powfmsno;
 		this.warstdate = warstdate;
 		this.wareddate = wareddate;
 		this.amcstdate = amcstdate;
 		this.amceddate = amceddate;
-		this.expdate = expdate;
-		this.vdamcname = vdamcname;
 		this.deviceinsurance = deviceinsurance;
 		this.principaleosupport = principaleosupport;
-		this.principaleoservice = principaleoservice;
+		this.machinetype = machinetype;
+		this.modelb = modelb;
+		this.remark = remark;
 		this.deleted = deleted;
 	}
 
@@ -209,60 +190,20 @@ public class Hardware {
 		this.oem = oem;
 	}
 
+	public String getVdamcname() {
+		return vdamcname;
+	}
+
+	public void setVdamcname(String vdamcname) {
+		this.vdamcname = vdamcname;
+	}
+
 	public String getAwe() {
 		return awe;
 	}
 
 	public void setAwe(String awe) {
 		this.awe = awe;
-	}
-
-	public String getWfmsno1() {
-		return wfmsno1;
-	}
-
-	public void setWfmsno1(String wfmsno1) {
-		this.wfmsno1 = wfmsno1;
-	}
-
-	public String getWfmsno2() {
-		return wfmsno2;
-	}
-
-	public void setWfmsno2(String wfmsno2) {
-		this.wfmsno2 = wfmsno2;
-	}
-
-	public String getMachinetype() {
-		return machinetype;
-	}
-
-	public void setMachinetype(String machinetype) {
-		this.machinetype = machinetype;
-	}
-
-	public String getModeltype() {
-		return modeltype;
-	}
-
-	public void setModeltype(String modeltype) {
-		this.modeltype = modeltype;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
 	}
 
 	public String getAssetno() {
@@ -273,12 +214,12 @@ public class Hardware {
 		this.assetno = assetno;
 	}
 
-	public String getDeviceserialno() {
-		return deviceserialno;
+	public String getSerialno() {
+		return serialno;
 	}
 
-	public void setDeviceserialno(String deviceserialno) {
-		this.deviceserialno = deviceserialno;
+	public void setSerialno(String serialno) {
+		this.serialno = serialno;
 	}
 
 	public String getIlophysicalip() {
@@ -289,20 +230,20 @@ public class Hardware {
 		this.ilophysicalip = ilophysicalip;
 	}
 
-	public String getDevicetype() {
-		return devicetype;
+	public String getTypeoros() {
+		return typeoros;
 	}
 
-	public void setDevicetype(String devicetype) {
-		this.devicetype = devicetype;
+	public void setTypeoros(String typeoros) {
+		this.typeoros = typeoros;
 	}
 
-	public String getModelno() {
-		return modelno;
+	public String getModela() {
+		return modela;
 	}
 
-	public void setModelno(String modelno) {
-		this.modelno = modelno;
+	public void setModela(String modela) {
+		this.modela = modela;
 	}
 
 	public String getCpuseries() {
@@ -385,6 +326,14 @@ public class Hardware {
 		this.approvaldate = approvaldate;
 	}
 
+	public String getApprovalwfmsno() {
+		return approvalwfmsno;
+	}
+
+	public void setApprovalwfmsno(String approvalwfmsno) {
+		this.approvalwfmsno = approvalwfmsno;
+	}
+
 	public String getPono() {
 		return pono;
 	}
@@ -401,12 +350,12 @@ public class Hardware {
 		this.podate = podate;
 	}
 
-	public String getDevamcwar() {
-		return devamcwar;
+	public String getPowfmsno() {
+		return powfmsno;
 	}
 
-	public void setDevamcwar(String devamcwar) {
-		this.devamcwar = devamcwar;
+	public void setPowfmsno(String powfmsno) {
+		this.powfmsno = powfmsno;
 	}
 
 	public String getWarstdate() {
@@ -441,22 +390,6 @@ public class Hardware {
 		this.amceddate = amceddate;
 	}
 
-	public String getExpdate() {
-		return expdate;
-	}
-
-	public void setExpdate(String expdate) {
-		this.expdate = expdate;
-	}
-
-	public String getVdamcname() {
-		return vdamcname;
-	}
-
-	public void setVdamcname(String vdamcname) {
-		this.vdamcname = vdamcname;
-	}
-
 	public String getDeviceinsurance() {
 		return deviceinsurance;
 	}
@@ -473,12 +406,29 @@ public class Hardware {
 		this.principaleosupport = principaleosupport;
 	}
 
-	public String getPrincipaleoservice() {
-		return principaleoservice;
+	public String getMachinetype() {
+		return machinetype;
 	}
 
-	public void setPrincipaleoservice(String principaleoservice) {
-		this.principaleoservice = principaleoservice;
+	public void setMachinetype(String machinetype) {
+		this.machinetype = machinetype;
+	}
+
+	public String getModelb() {
+		return modelb;
+	}
+
+	public void setModelb(String modelb) {
+		this.modelb = modelb;
+	}
+	
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public boolean isDeleted() {
@@ -489,5 +439,4 @@ public class Hardware {
 		this.deleted = deleted;
 	}
 
-	
 }
